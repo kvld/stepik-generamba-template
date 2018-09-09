@@ -27,11 +27,15 @@ final class {{ module_info.name }}Interactor: {{ module_info.name }}InteractorPr
     
     // MARK: Do some action
 
-    func doSomething(request: {{ module_info.name }}.Something.Request) {
+    func doSomeAction(request: {{ module_info.name }}.Something.Request) {
         self.provider.fetchSomeItems().done { items in
-            self.presenter.presentSomething(result: .success(items)
+            self.presenter.presentSomething(
+                response: {{ module_info.name }}.Something.Response(result: .success(items))
+            )
         }.catch { error in
-            self.presenter.presentSomething(result: .failure(Error.fetchFailed))
+            self.presenter.presentSomething(
+                response: {{ module_info.name }}.Something.Response(result: .failure(Error.fetchFailed))
+            )
         }
     }
 

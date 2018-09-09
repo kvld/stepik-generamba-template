@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol {{ module_info.name }}ViewController: class {
+protocol {{ module_info.name }}ViewControllerProtocol: class {
     func displaySomething(viewModel: {{ module_info.name }}.Something.ViewModel)
 }
 
@@ -17,7 +17,7 @@ final class {{ module_info.name }}ViewController: UIViewController {
     private var state: {{ module_info.name }}.ViewControllerState
 
     init(
-        interactor: {{ module_info.name }}BusinessLogic, 
+        interactor: {{ module_info.name }}InteractorProtocol, 
         initialState: {{ module_info.name }}.ViewControllerState = .loading
     ) {
         self.interactor = interactor
