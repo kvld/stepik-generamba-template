@@ -1,0 +1,16 @@
+# Template information section
+name: stepik-module
+summary: Stepik module (based on Clean Swift Architecture)
+author: Stepik
+version: 1.0.0
+license: MIT
+
+# The declarations for code files
+code_files:
+- {name: Assembly.swift, path: Code/Assembly.swift.liquid}
+- {name: ViewController.swift, path: Code/ViewController.swift.liquid}
+- {name: Interactor.swift, path: Code/Interactor.swift.liquid}
+- {name: Presenter.swift, path: Code/Presenter.swift.liquid}
+- {name: DataFlow.swift, path: Code/DataFlow.swift.liquid}
+- {name: Provider/Provider.swift, path: Code/Provider/Provider.swift.liquid}
+- {name: View/View.swift, path: Code/View/View.swift.liquid}

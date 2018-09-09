@@ -1,0 +1,35 @@
+//
+//  {{ module_info.description }}
+//  Created by {{ developer.name }} on {{ date }}.
+//
+
+import Foundation
+
+enum {{ module_info.name }} {
+    // MARK: Common structs
+    // Place here structs used in Requests/Responses
+
+    // MARK: Use cases
+
+    /// Sample use case
+    enum Something {
+        struct Request { }
+
+        struct Response {
+            var result: Result<Any>
+        }
+
+        struct ViewModel {
+            var state: ViewControllerState
+        }
+    }
+
+    // MARK: States
+
+    enum ViewControllerState {
+        case loading
+        case result(data: [Any])
+        case emptyResult
+        case error(message: String)
+    }
+}

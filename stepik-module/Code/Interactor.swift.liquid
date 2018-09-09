@@ -1,0 +1,38 @@
+//
+//  {{ module_info.description }}
+//  Created by {{ developer.name }} on {{ date }}.
+//
+
+import Foundation
+import PromiseKit
+
+protocol {{ module_info.name }}InteractorProtocol {
+    func doSomeAction(request: {{ module_info.name }}.Something.Request)
+}
+
+final class {{ module_info.name }}Interactor: {{ module_info.name }}InteractorProtocol {
+    let presenter: {{ module_info.name }}PresenterProtocol
+    let provider: {{ module_info.name }}ProviderProtocol
+
+    init(
+        presenter: {{ module_info.name }}PresenterProtocol, 
+        provider: {{ module_info.name }}ProviderProtocol
+    ) {
+        self.presenter = presenter
+        self.provider = provider
+    }
+    
+    // MARK: Do some action
+
+    func doSomething(request: {{ module_info.name }}.Something.Request) {
+        self.provider.fetchSomeItems().done { items in
+            self.presenter.presentSomething(result: .success(items)
+        }.catch { error in
+            self.presenter.presentSomething(result: .failure(Error.fetchFailed))
+        }
+    }
+
+    enum Error: Swift.Error {
+        case fetchFailed
+    }
+}

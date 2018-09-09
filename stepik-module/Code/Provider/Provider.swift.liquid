@@ -1,0 +1,19 @@
+//
+//  {{ module_info.description }}
+//  Created by {{ developer.name }} on {{ date }}.
+//
+
+import Foundation
+import PromiseKit
+
+protocol {{ module_info.name }}ProviderProtocol {
+    func fetchSomeItems() -> Promise<[Any]>
+}
+
+final class {{ module_info.name }}Provider: {{ module_info.name }}ProviderProtocol {
+    func fetchSomeItems() -> Promise<[Any]> {
+        return Promise<[Any]> { seal in
+            seal.fulfill(["" as! Any])
+        }
+    }
+}
