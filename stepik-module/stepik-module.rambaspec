@@ -14,3 +14,7 @@ code_files:
 - {name: DataFlow.swift, path: Code/DataFlow.swift.liquid}
 - {name: Provider/Provider.swift, path: Code/Provider/Provider.swift.liquid}
 - {name: View/View.swift, path: Code/View/View.swift.liquid}
+
+dependencies:
+- SnapKit
+- PromiseKit
