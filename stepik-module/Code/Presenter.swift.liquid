@@ -1,34 +1,13 @@
-//
-//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
-//  {{ module_info.project_name }}
-//
-//  Created by {{ developer.name }} on {{ date }}.
-//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
-//
-
 import UIKit
 
 protocol {{ module_info.name }}PresenterProtocol {
-    func presentSomething(response: {{ module_info.name }}.Something.Response)
+    func presentSomeActionResult(response: {{ module_info.name }}.SomeAction.Response)
 }
 
 final class {{ module_info.name }}Presenter: {{ module_info.name }}PresenterProtocol {
     weak var viewController: {{ module_info.name }}ViewControllerProtocol?
 
-    func presentSomething(response: {{ module_info.name }}.Something.Response) {
-        var viewModel: {{ module_info.name }}.Something.ViewModel
-        
-        switch response.result {
-        case let .failure(error):
-            viewModel = {{ module_info.name }}.Something.ViewModel(state: .error(message: error.localizedDescription))
-        case let .success(result):
-            if result.isEmpty {
-                viewModel = {{ module_info.name }}.Something.ViewModel(state: .emptyResult)
-            } else {
-                viewModel = {{ module_info.name }}.Something.ViewModel(state: .result(data: result))
-            }
-        }
-        
-        viewController?.displaySomething(viewModel: viewModel)
+    func presentSomeActionResult(response: {{ module_info.name }}.SomeAction.Response) {
+
     }
 }

@@ -1,21 +1,15 @@
-//
-//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
-//  {{ module_info.project_name }}
-//
-//  Created by {{ developer.name }} on {{ date }}.
-//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
-//
-
 import Foundation
 import PromiseKit
 
 protocol {{ module_info.name }}InteractorProtocol {
-    func doSomeAction(request: {{ module_info.name }}.Something.Request)
+    func doSomeAction(request: {{ module_info.name }}.SomeAction.Request)
 }
 
 final class {{ module_info.name }}Interactor: {{ module_info.name }}InteractorProtocol {
-    let presenter: {{ module_info.name }}PresenterProtocol
-    let provider: {{ module_info.name }}ProviderProtocol
+    weak var moduleOutput: {{ module_info.name }}OutputProtocol?
+
+    private let presenter: {{ module_info.name }}PresenterProtocol
+    private let provider: {{ module_info.name }}ProviderProtocol
 
     init(
         presenter: {{ module_info.name }}PresenterProtocol, 
@@ -24,22 +18,16 @@ final class {{ module_info.name }}Interactor: {{ module_info.name }}InteractorPr
         self.presenter = presenter
         self.provider = provider
     }
-    
-    // MARK: Do some action
 
-    func doSomeAction(request: {{ module_info.name }}.Something.Request) {
-        self.provider.fetchSomeItems().done { items in
-            self.presenter.presentSomething(
-                response: {{ module_info.name }}.Something.Response(result: .success(items))
-            )
-        }.catch { error in
-            self.presenter.presentSomething(
-                response: {{ module_info.name }}.Something.Response(result: .failure(Error.fetchFailed))
-            )
-        }
+    func doSomeAction(request: {{ module_info.name }}.SomeAction.Request) {
+
     }
 
     enum Error: Swift.Error {
-        case fetchFailed
+        case something
     }
+}
+
+extension {{ module_info.name }}Interactor: {{ module_info.name }}InputProtocol {
+
 }
